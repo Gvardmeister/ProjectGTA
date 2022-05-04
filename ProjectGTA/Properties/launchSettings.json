@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ProjectGTA": {
+      "commandName": "Project",
+      "commandLineArgs": "ragemp-server.exe",
+      "workingDirectory": "D:\\RageMp\\server-files",
+      "remoteDebugEnabled": false
+    }
+  }
+}
