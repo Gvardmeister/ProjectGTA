@@ -17,7 +17,7 @@ namespace ProjectGTA
             {
                 player.SendChatMessage("~r~Неверная модель т/с");
             }
-
+                                    
             Vehicle vehicle = NAPI.Vehicle.CreateVehicle(vhash, player.Position, player.Heading, color1, color2);
             vehicle.NumberPlate = "ADMIN";
             vehicle.Locked = false;

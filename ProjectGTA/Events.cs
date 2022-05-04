@@ -11,15 +11,15 @@ namespace ProjectGTA
 
         private void OnPlayetConnected(Player player)
         {
-            player.SendChatMessage("Добро пожаловать на сервер ~g~(название моегомоего сервера)");
+            player.SendChatMessage("Добро пожаловать на сервер ~g~ТестСервака");
         }
 
         [ServerEvent(Event.PlayerSpawn)]
 
         private void OnPlayerSpawn(Player player)
         {
-            player.Health = 100; // на видео было 50
-            player.Armor = 100; // на видео было 50
+            player.Health = 100; // Для всех игроков на старте
+            player.Armor = 0; // Для всех игроков на старте (0)
         }
     }
 }
