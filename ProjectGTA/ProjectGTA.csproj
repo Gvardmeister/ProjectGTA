@@ -21,6 +21,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.29" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Bootstrapper">
       <HintPath>..\..\..\dotnet\runtime\Bootstrapper.dll</HintPath>
     </Reference>

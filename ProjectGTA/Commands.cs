@@ -9,7 +9,7 @@ namespace ProjectGTA
     {
         [Command("veh", "/veh спавнит авто в координатах игрока", Alias = "vehicle")]
 
-        private void cmd_veh(Player player, string vehname, int color1, int color2)
+        public void CmdVeh(Player player, string vehname, int color1, int color2)
         {
             uint vhash = NAPI.Util.GetHashKey(vehname);
 
@@ -23,6 +23,13 @@ namespace ProjectGTA
             vehicle.Locked = false;
             vehicle.EngineStatus = true;
             player.SetIntoVehicle(vehicle, (int)VehicleSeat.Driver);
+        }
+
+        [Command("freeze", "/freeze [ник игрока] [true/false]")]
+
+        public void CmdFreeze(Player player, Player target, bool freezestatus)
+        {
+            NAPI.ClientEvent.TriggerClientEvent(target, "PlayerFreeze", freezestatus);
         }
     }
 }
