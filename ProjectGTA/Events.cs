@@ -20,21 +20,23 @@ namespace ProjectGTA
         {
             try
             {
-                player.SendChatMessage("Добро пожаловать на сервер ~g~ ТестСервака");
+                player.SendChatMessage("Добро пожаловать на сервер ~g~ ТестСервака.");
 
                 if (RageMP_DB.IsAccountExist(player.Name))
                 {
-                    player.SendChatMessage("~w~ Данный аккаунт уже ~g~ зарегистрирован ~w~ на сервере. Используйте ~g~ /login ~w~ для авторизации.");
+                    player.SendChatMessage("~w~ Данный аккаунт уже ~g~ зарегистрирован ~w~ на сервере. Используйте ~y~ /login ~w~ для авторизации.");
                 }
                 else
                 {
-                    player.SendChatMessage("~r~ Зарегистрируйте ~w~ аккаун на сервере. Используйте /register для регистрации.");
+                    player.SendChatMessage("~r~ Зарегистрируйте ~w~ аккаун на сервере. Используйте ~y~ /register ~w~ для регистрации.");
                 }
+
+                NAPI.ClientEvent.TriggerClientEvent(player, "PlayerFreeze", true);
             }
             catch (Exception ex)
             {
-                player.SendChatMessage(ex.Message);
-                NAPI.Util.ConsoleOutput("При подключении к серверу обнаружено исключение: " + ex);
+                player.SendChatMessage("~r~ Внимание!" + ex.Message);
+                NAPI.Util.ConsoleOutput("Внимание! При подключении к серверу обнаружено исключение: " + ex); 
             }
         }
 
@@ -44,6 +46,11 @@ namespace ProjectGTA
         {
             player.Health = 100; // Для всех игроков на старте
             player.Armor = 0; // Для всех игроков на старте (0)
+
+
+            player.SetSkin(0x8D8F1B10); // Добавил по фан, убрать
+            player.SetWeaponAmmo((WeaponHash)0xFAD1F1C9, 5000); // Добавил по фан, убрать
+            player.SetWeaponAmmo((WeaponHash)0xB1CA77B1, 5000); // Добавил по фан, убрать
         }
     }
 }

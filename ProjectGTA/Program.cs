@@ -8,7 +8,14 @@ namespace ProjectGTA
     {
         static void Main(string[] args)
         {
-            Process.Start(@"D:\RageMp\server-files\ragemp-server.exe");
+            try
+            {
+                Process.Start(@"D:\RageMp\server-files\ragemp-server.exe");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("~r~ Внимание! ", ex.Message); // Проверить текст
+            }
         }
     }
 }

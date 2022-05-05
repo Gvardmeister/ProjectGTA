@@ -36,12 +36,12 @@ namespace ProjectGTA
 
                 _Connection.Open();
 
-                NAPI.Util.ConsoleOutput("Подключение к серверу MySQL успешно установлено");
+                NAPI.Util.ConsoleOutput("Подключение к серверу MySQL успешно установлено.");
             }
             catch (Exception ex)
             {
-                NAPI.Util.ConsoleOutput("Не удалось подключиться к серверу MySQL");
-                NAPI.Util.ConsoleOutput("Обнаружено исключение: " + ex.ToString()); // Добавил ToString()
+                NAPI.Util.ConsoleOutput("Не удалось подключиться к серверу MySQL.");
+                NAPI.Util.ConsoleOutput("Внимание! Обнаружено исключение: " + ex);
 
                 NAPI.Task.Run(() => { Environment.Exit(0); }, delayTime: 5000);
             }
@@ -79,13 +79,13 @@ namespace ProjectGTA
                 command.Parameters.AddWithValue("@pass", saltPW);
                 command.Parameters.AddWithValue("@cash", account.Cash);
 
-                command.ExecuteReader();
+                command.ExecuteNonQuery();
 
                 account.ID = (int)command.LastInsertedId;
             }
             catch(Exception ex)
             {
-                NAPI.Util.ConsoleOutput("Обнаружено исключение: " + ex.ToString());
+                NAPI.Util.ConsoleOutput("Внимание! Обнаружено исключение: " + ex);
             }
         }
 
