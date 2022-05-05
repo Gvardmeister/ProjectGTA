@@ -18,7 +18,24 @@ namespace ProjectGTA
 
         public void OnPlayetConnected(Player player)
         {
-            player.SendChatMessage("Добро пожаловать на сервер ~g~ТестСервака");
+            try
+            {
+                player.SendChatMessage("Добро пожаловать на сервер ~g~ ТестСервака");
+
+                if (RageMP_DB.IsAccountExist(player.Name))
+                {
+                    player.SendChatMessage("~w~ Данный аккаунт уже ~g~ зарегистрирован ~w~ на сервере. Используйте ~g~ /login ~w~ для авторизации.");
+                }
+                else
+                {
+                    player.SendChatMessage("~r~ Зарегистрируйте ~w~ аккаун на сервере. Используйте /register для регистрации.");
+                }
+            }
+            catch (Exception ex)
+            {
+                player.SendChatMessage(ex.Message);
+                NAPI.Util.ConsoleOutput("При подключении к серверу обнаружено исключение: " + ex);
+            }
         }
 
         [ServerEvent(Event.PlayerSpawn)]
